@@ -11,7 +11,7 @@ class Absence extends Model
 
     protected $guarded = ['id'];
 
-    public function siswa(){
+    public function staff(){
         return $this->hasOne(Staff::class,'staff_id','staff_id');
     }
 }
