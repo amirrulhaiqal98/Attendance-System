@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+  
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,6 +15,15 @@
         <div class="card bg-white shadow rounded-3 p-3 border-0">
 
             {{-- Notification --}}
+            @if (session()->has('FailStaff'))
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>
+                        {{session('FailStaff')}}
+                    </strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+            
             @if (session()->has('Fail'))
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                     <strong>
@@ -55,7 +65,7 @@
                 @foreach ($absence as $item)
                 <tr>
                     <td>{{$item->staff->name}}</td>
-                    <td>{{$item->date}}</td>
+                    <td>{{$item->created_at}}</td>
                 </tr> 
                 @endforeach
             </table>
